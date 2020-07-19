@@ -16,9 +16,26 @@ class Job(models.Model):
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
     experiance = models.IntegerField(default=1)
+    category = models.ForeignKey('Category',on_delete=models.CASCADE,blank=True, null=True)
 
-
-
+    class Meta:
+        managed = True
+        verbose_name = 'Job'
+        verbose_name_plural = 'Jobs'
+    
     def __str__(self):
         return self.title
 
+
+class Category(models.Model):
+    
+    name =models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = ("Category")
+        verbose_name_plural = ("Categories")
+
+    def __str__(self):
+        return self.name
+
+ 
