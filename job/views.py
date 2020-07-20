@@ -8,9 +8,9 @@ def job_list(request):
     context = {
         'jobs':jobList
     }
-    return render(request,'job_list.html',context)
+    return render(request,'jobs.html',context)
 
 def job_detail(request,id):
     job_det = Job.objects.get(id=id)
     context = {'job':job_det}
-    return render(request,'job_detail.html',context)
+    return render(request,'job_details.html',context)
