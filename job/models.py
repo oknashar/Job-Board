@@ -6,6 +6,12 @@ jobType = (
     ('Full Time','Full Time'),
     ('Part Time','Part Time')
 )
+
+#coustomizing upload image
+def image_upload(instance ,filename):
+    imgname , extintion = filename.split('.')
+    return 'jobs/%s.%s'%(instance.id,extintion)
+
 class Job(models.Model):
 
     title =models.CharField(max_length=100)
@@ -17,7 +23,7 @@ class Job(models.Model):
     salary = models.IntegerField(default=0)
     experiance = models.IntegerField(default=1)
     category = models.ForeignKey('Category',on_delete=models.CASCADE,blank=True, null=True)
-
+    image = models.ImageField(upload_to=image_upload)
     class Meta:
         managed = True
         verbose_name = 'Job'
