@@ -38,6 +38,9 @@ class Job(models.Model):
         return self.title
 
 
+
+
+
 class Category(models.Model):
     
     name =models.CharField(max_length=50)
@@ -50,3 +53,19 @@ class Category(models.Model):
         return self.name
 
  
+class Apply(models.Model):
+    job = models.ForeignKey("Job", related_name='apply_job', on_delete=models.CASCADE)
+    name = models.CharField( max_length=50)
+    email = models.EmailField(max_length=100)
+    website = models.URLField( max_length=200,blank=True, null=True)
+    cv = models.FileField(upload_to='apply/',)
+    cover_letter  =models.TextField(max_length=500)
+    created_at =models.DateTimeField(auto_now=True, auto_now_add=False)
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'Apply'
+        managed = True
+        verbose_name = 'Apply'
+        verbose_name_plural = 'Applys'
