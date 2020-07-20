@@ -1,7 +1,6 @@
 from django.db import models
-
 # Create your models here.
-
+from django.utils.text import slugify
 jobType = (
     ('Full Time','Full Time'),
     ('Part Time','Part Time')
@@ -24,10 +23,16 @@ class Job(models.Model):
     experiance = models.IntegerField(default=1)
     category = models.ForeignKey('Category',on_delete=models.CASCADE,blank=True, null=True)
     image = models.ImageField(upload_to=image_upload)
+
+    slug = models.SlugField(blank=True, null=True)
     class Meta:
         managed = True
         verbose_name = 'Job'
         verbose_name_plural = 'Jobs'
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Job, self).save(*args, **kwargs) # Call the real save() method
     
     def __str__(self):
         return self.title
