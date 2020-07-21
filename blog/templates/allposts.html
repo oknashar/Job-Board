@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+<!-- <h1>Welcome to my Blog</h1>
+<a href="{% url 'blog:create_post'  %}">Add New Post</a>
+
+{% for post in all_posts %}
+    <h3> <a href=" {% url 'blog:post' post.id %}">{{ post.title}}</a> </h3>
+{% endfor %} -->
+
+{% block body %}
+          <!-- bradcam_area  -->
+          <div class="bradcam_area bradcam_bg_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="bradcam_text">
+                            <h3>{{all_posts|length}}+ Posts Available</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ bradcam_area  -->
+     
+     <div class="mt-50">
+
+      <button type="button" class="btn btn-dark mr-4 float-right" ><a href="{% url 'blog:create_post' %}" style="color: white; text-decoration: none;" >Add Post</a></button>
+      <div class="container">
+        <div class="row mt-4">
+          {% for post in all_posts %}
+          <div class="col-md-4">
+
+            <div class="card">
+                {% if post.img %}
+                <img src="{{ post.img.url }}" class="card-img-top" alt="...">
+                {% endif %}
+
+                <div class="card-body">
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p class="card-text" >{{ post.content|safe|truncatewords:10}}</p>
+                  <a href="{% url 'blog:post' post.id %}" class="btn btn-primary">Know more</a>
+                </div>
+              </div>
+
+           </div> 
+           
+          {% endfor %}
+         
+        </div>
+      </div>
+     </div>
+
+      {% endblock body %}

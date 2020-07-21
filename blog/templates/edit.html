@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block body %}
+        <!-- bradcam_area  -->
+        <div class="bradcam_area bradcam_bg_1">
+            <div class="container">
+              
+            </div>
+        </div>
+        <!--/ bradcam_area  -->
+<div style="width: 80%; margin: 5%;">
+    <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{form.media}}    
+        {% bootstrap_form form%}
+    
+        {%buttons%}
+        <button type="submit" class="btn btn-primary">save Post</button>
+        {% endbuttons%}
+    
+    </form>
+</div>
+
+{% endblock body %}
+    
