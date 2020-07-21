@@ -2,6 +2,7 @@ from django.db import models
 # Create your models here.
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 jobType = (
     ('Full Time','Full Time'),
     ('Part Time','Part Time')
@@ -17,7 +18,7 @@ class Job(models.Model):
     title =models.CharField(max_length=100)
     #location
     job_type = models.CharField(max_length=20,choices=jobType)
-    description= models.TextField(max_length=1000)
+    description= RichTextField()
     published_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
