@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'ckeditor',
     'django_filters',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
