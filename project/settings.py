@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'contact',
     'blog',
     'bootstrap4',
-    'ckeditor'
+    'ckeditor',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

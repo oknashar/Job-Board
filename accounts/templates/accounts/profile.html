@@ -24,8 +24,12 @@
                         <div class="summery_header">
                             <h3>Profile Summery</h3>
                         </div>
-                        <p>Image</p>
-                            <img class="ilstration_img w-25" src="{{profile.image.url}}" alt="">
+                       
+                       {% if profile.image %}
+                       <p>Image</p>
+                       <img class="ilstration_img w-25" src="{{profile.image.url}}" alt="">
+                       {% endif %}
+                           
                         <div class="job_content">
                            
                             <ul>

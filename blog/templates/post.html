@@ -12,7 +12,15 @@
           </div>
       </div>
       <!--/ bradcam_area  -->
-<button type="button" class="btn btn-dark mr-4 float-right" ><a href="{% url 'blog:edit_post' post.id %}" style="color: white; text-decoration: none;" >update Post</a></button>
+      
+      {% if user.is_superuser %}
+        <div class="mt-30">
+          <button type="button" class="btn btn-dark mr-4 float-right" ><a href="{% url 'blog:edit_post' post.id %}" style="color: white; text-decoration: none;" >update Post</a></button>     
+        </div>
+      {% else %}
+      <div></div>
+      {% endif %}
+        
 
 
 <div class="container">

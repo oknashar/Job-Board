@@ -22,8 +22,15 @@
         <!--/ bradcam_area  -->
      
      <div class="mt-50">
-
-      <button type="button" class="btn btn-dark mr-4 float-right" ><a href="{% url 'blog:create_post' %}" style="color: white; text-decoration: none;" >Add Post</a></button>
+      
+      {% if user.is_superuser %}
+      <div>
+        <button type="button" class="btn btn-dark mr-4 float-right" ><a href="{% url 'blog:create_post' %}" style="color: white; text-decoration: none;" >Add Post</a></button>
+      </div>
+      {% else %}
+      <div></div>
+      {% endif %}
+        
       <div class="container">
         <div class="row mt-4">
           {% for post in all_posts %}
